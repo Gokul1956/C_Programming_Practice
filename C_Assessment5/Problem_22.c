@@ -7,7 +7,7 @@ int main()
     printf("enter a no : ");
     scanf("%d",&a);
     
-    while (a>=0)
+    while (a>=10)
     {
         int check = a%100;
         if(check%2 != 0){

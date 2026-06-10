@@ -1,19 +1,19 @@
-#include<stdio.h>
+#include <stdio.h>
 
 int main()
 {
     char str[100];
-    int count = 1;
+    int count = 0;
 
     printf("Enter string: ");
-
-    gets(str);
+    fgets(str, sizeof(str), stdin);
 
     int i = 0;
 
     while(str[i] != '\0')
     {
-        if(str[i] == ' ')
+        if(str[i] != ' ' &&
+           (i == 0 || str[i-1] == ' '))
         {
             count++;
         }

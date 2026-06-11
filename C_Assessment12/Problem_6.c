@@ -6,6 +6,7 @@ void sub(char num1[], char num2[], char result[]);
 int compare(char num1[], char num2[]);
 void removeLeadingZeros(char str[]);
 void multiply(char num1[], char num2[], char result[]);
+void divide(char num1[], int divisor);
 
 
 int main()
@@ -109,6 +110,25 @@ int main()
         {
             multiply(num1,num2,result);
             printf("%s\n",result);
+        }
+        else if(op == '/')
+        {
+            int divisor = 0;
+
+            for(int i = 0; num2[i] != '\0'; i++)
+            {
+                divisor =
+                    divisor * 10 +
+                    (num2[i] - '0');
+            }
+
+            if(divisor == 0)
+            {
+                printf("Division by Zero Not Allowed\n");
+                continue;
+            }
+
+            divide(num1, divisor);
         }
 }  
     return 0;
@@ -323,4 +343,23 @@ void multiply(char num1[], char num2[], char result[]){
     }
 
     result[k] = '\0';
+}
+void divide(char num1[], int divisor){
+    int divisor;
+    int remainder = 0;
+
+    char quotient[60];
+    int k = 0;
+    for(int i=0; num1[i]!='\0'; i++)
+    {
+        int current =remainder * 10 +(num1[i] - '0');
+
+        quotient[k++] =(current / divisor) + '0';
+
+        remainder =current % divisor;
+    }
+    quotient[k] = '\0';
+    removeLeadingZeros(quotient);
+    printf("Quotient = %s\n", quotient);
+    printf("Remainder = %d\n", remainder);
 }
